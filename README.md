@@ -12,6 +12,21 @@ npm install -g latest
 npm -v
 ```
 
+# Switch between other Node versions if needed
+```bash
+nvm install <version>
+nvm use <version>
+node -v
+```
+
+# Install JDK
+With JDK properly installed and set on your machine, set the corresponding JAVA_HOME variable, as follows:
+```bash
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+source ~/.bash_profile
+```
+
 # Get Started with the WebDriver.IO
 ```bash
 npm init -y
@@ -109,7 +124,14 @@ appium
 -----------------------
 # ANDROID STUDIO Setup
 If you are using Android on your project, make sure you have all the requirements satisfied with Appium Drivers.
-Initially, install UIAutomator2 and run the Appium Doctor to have an initial analysis about your environment and further needs.
+
+Initially, open Android Studio and on Preferences > System Settings > Android SDK > SDK Tools tab, ensure the following are checked and updated:
+- Android SDK Platform-Tools
+- Android SDK Tools
+- Android Command-line Tools
+- Android SDK Build-Tools (install a version compatible with your app's requirements)
+
+Finally, install UIAutomator2 and run the Appium Doctor to have an initial analysis about your environment and further needs.
 
 ## Appium Doctor for Android
 ```bash
@@ -169,6 +191,19 @@ Follow the same steps as for ANDROID_HOME, but this time use JAVA_HOME as the va
 After installing the necessary tools and setting up the environment variables, run the following command again to verify everything is correctly configured:
 ```bash
 appium-doctor --android
+```
+
+## 6. Create a Virtual Device
+On Android Studio, go to Device Manager and create a new virtual device.
+In the terminal, run this command:
+```bash
+adb devices
+```
+
+You should see an emulator in the list:
+```bash
+List of devices attached
+emulator-5554   device
 ```
 
 --------------

@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -54,21 +56,23 @@ export const config: WebdriverIO.Config = {
   services: ["appium"],
   capabilities: [
     {
-      // capabilities for local Appium web tests on iOS
+      // iOS capability
       platformName: "iOS",
       browserName: "Safari",
       "appium:deviceName": "iPhone Simulator",
       "appium:platformVersion": "16.4",
       "appium:automationName": "XCUITest"
-      // 'appium:app': '/path/to/ios-app.app'
     },
+    
     {
       // Android capability
       platformName: "Android",
+      browserName: 'Chrome',
       "appium:deviceName": "Android Emulator",
       "appium:platformVersion": "13.0",
       "appium:automationName": "UiAutomator2",
-      // "appium:app": "/path/to/android-app.apk"
+      "appium:app": path.join(process.cwd(),"./resources/app/ApiDemos-debug.apk")
+      // path.resolve(__dirname, './resources/app/ApiDemos-debug.apk'),
     }
   ],
 
@@ -171,6 +175,17 @@ export const config: WebdriverIO.Config = {
     // <boolean> Enable this config to treat undefined definitions as warnings.
     ignoreUndefinedDefinitions: false
   },
+
+  reporters: [
+    [
+      "cucumberjs-json",
+      {
+        jsonFolder: "./reports/json",
+        language: "en",
+        reportFilePerRetry: "true"
+      }
+    ]
+  ]
 
   //
   // =====
@@ -348,5 +363,4 @@ export const config: WebdriverIO.Config = {
    */
   // afterAssertion: function(params) {
   // }
-
 };

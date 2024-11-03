@@ -1,4 +1,5 @@
 import { browser } from '@wdio/globals'
+import 'webdriverio';
 
 export default class Page {
 

@@ -11,7 +11,8 @@
             "node",
             "@wdio/globals/types",
             "expect-webdriverio",
-            "@wdio/cucumber-framework"
+            "@wdio/cucumber-framework",
+            "@wdio/sync"
         ],
         "skipLibCheck": true,
         "noEmit": true,
@@ -22,7 +23,9 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "allowJs": true
+        "allowJs": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "test",
